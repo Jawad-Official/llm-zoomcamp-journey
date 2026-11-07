@@ -1,3 +1,14 @@
+"""Lesson 8: RAG helper (the robot blueprint).
+
+Simple version: RAGBase is a blueprint for a question-answering robot.
+Every robot built from it does the same 3 steps:
+    1. search()       -> find the best FAQ cards for the question
+    2. build_prompt() -> write a note: question + those cards
+    3. llm()          -> ask the AI (Azure gpt-5-nano) to answer using the note
+rag() runs all 3 steps with one call.
+
+Used by: 08_rag_helper.ipynb, 09b_persistent_rag.ipynb, 11-16_agents.ipynb
+"""
 from ingest import load_faq_data, build_index
 from openai import OpenAI
 from dotenv import load_dotenv

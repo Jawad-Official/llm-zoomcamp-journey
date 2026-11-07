@@ -1,6 +1,14 @@
+"""Lesson 8: data loading helpers.
+
+Simple version: this file is the "librarian".
+- load_faq_data() downloads every FAQ card (question + answer) from the DataTalks.Club website.
+- build_index() puts those cards into a minsearch index, so we can find the right cards fast.
+"""
 import requests
 from minsearch import Index
 
+
+# Download the list of courses, then every course's FAQ cards, into one big list.
 def load_faq_data():
     docs_url = "https://datatalks.club/faq/json/courses.json"
     response = requests.get(docs_url)
@@ -19,6 +27,8 @@ def load_faq_data():
 
     return documents
 
+
+# Build the search "book index": search the text fields, filter by course.
 def build_index(documents):
     index = Index(
         text_fields=["question", "section", "answer"],
