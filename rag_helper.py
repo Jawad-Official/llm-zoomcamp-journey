@@ -3,9 +3,11 @@ from openai import OpenAI
 from dotenv import load_dotenv
 from os import getenv
 
+load_dotenv()
+
 openai_client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",
-    api_key=getenv("OPENROUTER_API_KEY"),
+    base_url="https://26120057-2478-resource.openai.azure.com/openai/v1",
+    api_key=getenv("AZURE_API_KEY"),
 )
 
 
@@ -53,7 +55,7 @@ class RAGBase:
         instructions=INSTRUCTIONS,
         course="llm-zoomcamp",
         prompt_template=USER_PROMPT_TEMPLATE,
-        model="nvidia/nemotron-3.5-lightning:free",
+        model="gpt-5-nano",
         tools = [search_tool]
     ):
         self.index = index
@@ -102,12 +104,12 @@ class RAGBase:
             {"role": "user", "content": prompt}
         ]
 
-        response = self.llm_client.chat.completions.create(
+        response = self.llm_client.responses.create(
             model=self.model,
-            messages=input_messages
+            input=input_messages
         )
 
-        return response.choices[0].message.content
+        return response.output_text
     
 
     def rag(self, query):
