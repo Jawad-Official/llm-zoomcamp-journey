@@ -27,6 +27,24 @@ Context: {context}
 '''
 
 
+search_tool = {
+    "type": "function",
+    "name": "search",
+    "description": "Search the FAQ database for entries matching the given query.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "query": {
+                "type": "string",
+                "description": "Search query text to look up in the course FAQ."
+            }
+        },
+        "required": ["query"],
+        "additionalProperties": False
+    }
+}
+
+
 class RAGBase:
     def __init__(
         self,
@@ -35,7 +53,8 @@ class RAGBase:
         instructions=INSTRUCTIONS,
         course="llm-zoomcamp",
         prompt_template=USER_PROMPT_TEMPLATE,
-        model="nvidia/nemotron-3.5-lightning:free"
+        model="nvidia/nemotron-3.5-lightning:free",
+        tools = [search_tool]
     ):
         self.index = index
         self.llm_client = llm_client
@@ -43,6 +62,7 @@ class RAGBase:
         self.course = course
         self.prompt_template = prompt_template
         self. model = model
+        self.tools = tools
 
 
 
@@ -82,12 +102,12 @@ class RAGBase:
             {"role": "user", "content": prompt}
         ]
 
-        response = self.llm_client.responses.create(
+        response = self.llm_client.chat.completions.create(
             model=self.model,
-            input=input_messages
+            messages=input_messages
         )
 
-        return response.output_text
+        return response.choices[0].message.content
     
 
     def rag(self, query):
