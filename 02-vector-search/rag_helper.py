@@ -1,4 +1,8 @@
-"""Lesson 8: RAG helper (the robot blueprint).
+"""COPY of Module 1's helper (01-agentic-rag/rag_helper.py, Lesson 8).
+Copied on purpose: a notebook can only import files from its own folder.
+If you change one copy, change the other too.
+
+RAG helper (the robot blueprint).
 
 Simple version: RAGBase is a blueprint for a question-answering robot.
 Every robot built from it does the same 3 steps:
@@ -7,7 +11,8 @@ Every robot built from it does the same 3 steps:
     3. llm()          -> ask the AI (Azure gpt-5-nano) to answer using the note
 rag() runs all 3 steps with one call.
 
-Used by: 08_rag_helper.ipynb, 09b_persistent_rag.ipynb, 11-16_agents.ipynb
+In Module 2, RAGVector / RAGPgVector reuse this blueprint and only replace search().
+Used by: 01-07_vector_search.ipynb, 07b_sqlitesearch_persistent.ipynb, 08_pgvector.ipynb
 """
 from ingest import load_faq_data, build_index
 from openai import OpenAI

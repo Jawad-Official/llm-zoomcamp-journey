@@ -42,3 +42,22 @@ My work for [LLM Zoomcamp](https://github.com/DataTalksClub/llm-zoomcamp), using
 | 16 | Other frameworks | `11-16_agents.ipynb` |
 
 Each notebook marks where every lesson starts (`Lesson N`) and ends (`End of Lesson N`).
+
+## Module 2: Vector Search (`02-vector-search/`)
+
+Search by **meaning** instead of exact words: turn text into vectors (embeddings) and find the closest ones.
+
+| Lesson | Topic | File |
+| --- | --- | --- |
+| 1 | What is vector search | `01-07_vector_search.ipynb` |
+| 2 | Embeddings | `01-07_vector_search.ipynb` |
+| 3 | Embedding our dataset | `01-07_vector_search.ipynb` |
+| 4 | Vector search with numpy | `01-07_vector_search.ipynb` |
+| 5 | Vector search with minsearch | `01-07_vector_search.ipynb` |
+| 6 | RAG with vector search | `01-07_vector_search.ipynb` |
+| 7 | Vector search with sqlitesearch | end of `01-07_vector_search.ipynb` (creates `faq_vectors2.db`), then `07b_sqlitesearch_persistent.ipynb` |
+| 8 | Vector search with PGVector | `08_pgvector.ipynb` (needs Postgres with pgvector on port 5433) |
+| 9 (optional) | ONNX embedder | `09_onnx_embedder.ipynb`, `download.py`, `embedder.py`. **Not my work:** I skipped this optional lesson, and Claude added it at my request. |
+| 10 | Next steps | end of `09_onnx_embedder.ipynb` |
+
+`ingest.py` and `rag_helper.py` are intentional copies of the Module 1 files (notebooks can only import from their own folder).

@@ -1,4 +1,8 @@
-"""Lesson 8: data loading helpers.
+"""COPY of Module 1's helper (01-agentic-rag/ingest.py, Lesson 8).
+Copied on purpose: a notebook can only import files from its own folder.
+If you change one copy, change the other too.
+
+Data loading helpers.
 
 Simple version: this file is the "librarian".
 - load_faq_data() downloads every FAQ card (question + answer) from the DataTalks.Club website.

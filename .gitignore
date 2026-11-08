@@ -9,6 +9,12 @@ wheels/
 # Virtual environments
 .venv
 .env
+
+# Local databases (re-created by the notebooks)
 faq.db*
 *.db
 *.db-wal
+*.db-shm
+
+# M2 Lesson 9: downloaded ONNX models (re-create with: uv run python download.py)
+models/
